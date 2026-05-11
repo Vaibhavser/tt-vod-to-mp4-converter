@@ -3,3 +3,8 @@ __pycache__/
 *.pyo
 *.pyd
 .Python
+.gradle/
+local.properties
+captures/
+**/build/
+android-app/.idea/

@@ -1,14 +1,20 @@
-# `.VOD` to MP4 Converter With Optional AI Enhancement
+# `TT VOD To MP4 Converter`
 
-This folder contains a Python script that converts a `.vod` video file into a high-quality `.mp4`.
+This repository now contains two converters:
 
-File:
-- `vod_to_mp4_ai.py`
+- `vod_to_mp4_ai.py`: desktop Python converter for `.vod` to high-quality `.mp4`
+- `android-app/`: Android Studio project for on-device `.vod` to `.mp4` export
 
-What it does:
+What the desktop tool does:
 - Converts `.vod` to `.mp4` with H.264 video and AAC audio
 - Uses high-quality defaults: `CRF 16`, `preset slow`, `audio 320k`
 - Can optionally enhance video frames with AI using Real-ESRGAN before encoding
+
+What the Android app does:
+- Lets you pick a `.vod` or other video file from storage
+- Converts it to `.mp4` on-device using Media3 Transformer
+- Tracks export progress and lets you share the finished MP4
+- Uses high-quality on-device transcoding, but does not yet include on-device AI upscaling
 
 ## Requirements
 
@@ -57,3 +63,13 @@ python vod_to_mp4_ai.py input.vod output.mp4 --fps 30
 - If your `.vod` file contains unusual codecs, FFmpeg still needs to be able to decode it.
 - AI enhancement is slower because frames are extracted, enhanced one by one, and then re-encoded.
 - For very large files, make sure you have enough temporary disk space.
+
+## Android App
+
+The Android project lives in `android-app/`.
+
+Open it in Android Studio, let Gradle sync, then run the app on a device with Android 6.0 or newer.
+
+Important note:
+- The Android app uses Google's Media3 Transformer API for reliable on-device MP4 export.
+- The desktop Python script remains the place where the optional AI enhancement path is implemented.
